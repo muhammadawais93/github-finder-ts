@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import AlertContext from '../../context/alert/alertContext';
 
 const Alert = () => {
   const alertContext = useContext(AlertContext);
 
+  // @ts-ignore
   const { alert } = alertContext;
 
   return (

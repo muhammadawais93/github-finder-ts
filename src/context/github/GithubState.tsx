@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import { useReducer } from 'react';
 import axios from 'axios';
 import GithubContext from './githubContext';
 import GithubReducer from './githubReducer';
@@ -21,7 +21,8 @@ if (process.env.NODE_ENV !== 'production') {
   githubClientSecret = process.env.GITHUB_CLIENT_SECRET;
 }
 
-const GithubState = props => {
+// TODO: Define the types for props
+const GithubState = (props: any) => {
   const initialState = {
     users: [],
     user: {},
@@ -31,8 +32,9 @@ const GithubState = props => {
 
   const [state, dispatch] = useReducer(GithubReducer, initialState);
 
+  // TODO: Define the types for Text
   // Search Users
-  const searchUsers = async text => {
+  const searchUsers = async (text: any) => {
     setLoading();
 
     const res = await axios.get(
@@ -45,8 +47,9 @@ const GithubState = props => {
     });
   };
 
+  // TODO: Define the types for username
   // Get User
-  const getUser = async username => {
+  const getUser = async (username: any) => {
     setLoading();
 
     const res = await axios.get(
@@ -59,8 +62,9 @@ const GithubState = props => {
     });
   };
 
+  // TODO: Define the types for username
   // Get Repos
-  const getUserRepos = async username => {
+  const getUserRepos = async (username: any) => {
     setLoading();
 
     const res = await axios.get(

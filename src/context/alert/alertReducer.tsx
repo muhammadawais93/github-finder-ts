@@ -1,6 +1,7 @@
 import { SET_ALERT, REMOVE_ALERT } from '../types';
 
-export default (state, action) => {
+// TODO: Define the types for the state and action
+export default (state: any, action: any) => {
   switch (action.type) {
     case SET_ALERT:
       return action.payload;

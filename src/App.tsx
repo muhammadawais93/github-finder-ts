@@ -1,4 +1,3 @@
-import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import User from './components/users/User';
@@ -12,7 +11,7 @@ import AlertState from './context/alert/AlertState';
 
 import './App.css';
 
-const App = () => {
+const App: React.FC = () => {
   const navbarDefaultProps = {
     title: 'Github Finder',
     icon: 'fab fa-github'
@@ -27,10 +26,10 @@ const App = () => {
             <div className='container'>
               <Alert />
               <Routes>
-                <Route exact path='/' element={<Home />} />
-                <Route exact path='/about' element={<About />} />
-                <Route exact path='/user/:login' element={<User />} />
-                <Route element={NotFound} />
+                <Route path='/' element={<Home />} />
+                <Route path='/about' element={<About />} />
+                <Route path='/user/:login' element={<User />} />
+                <Route path="*" element={<NotFound />} />
               </Routes>
             </div>
           </div>

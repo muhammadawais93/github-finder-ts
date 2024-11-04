@@ -1,8 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const Navbar = ({ icon, title }) => {
+type NavbarProps = {
+  title: string;
+  icon: string;
+}
+
+const Navbar = ({ icon, title }: NavbarProps) => {
   return (
     <nav className='navbar bg-primary'>
       <h1>
@@ -18,11 +21,6 @@ const Navbar = ({ icon, title }) => {
       </ul>
     </nav>
   );
-};
-
-Navbar.propTypes = {
-  title: PropTypes.string.isRequired,
-  icon: PropTypes.string.isRequired
 };
 
 export default Navbar;

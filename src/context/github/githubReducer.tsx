@@ -6,7 +6,8 @@ import {
   GET_REPOS
 } from '../types';
 
-export default (state, action) => {
+// TODO: Define the types for the state and action
+export default (state: any, action: any) => {
   switch (action.type) {
     case SEARCH_USERS:
       return {

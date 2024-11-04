@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useContext } from 'react';
+import { useEffect, useContext } from 'react';
 import Spinner from '../layout/Spinner';
 import Repos from '../repos/Repos';
 import { Link, useParams } from 'react-router-dom';
@@ -11,8 +11,10 @@ const User = () => {
   const { getUser, loading, user, repos, getUserRepos } = githubContext;
 
   useEffect(() => {
-    getUser(userId.login);
-    getUserRepos(userId.login);
+    if (userId.login) {
+      getUser(userId.login);
+      getUserRepos(userId.login);
+    }
     // eslint-disable-next-line
   }, []);
 
@@ -35,7 +37,7 @@ const User = () => {
   if (loading) return <Spinner />;
 
   return (
-    <Fragment>
+    <>
       <Link to='/' className='btn btn-light'>
         Back To Search
       </Link>
@@ -58,10 +60,10 @@ const User = () => {
         </div>
         <div>
           {bio && (
-            <Fragment>
+            <>
               <h3>Bio</h3>
               <p>{bio}</p>
-            </Fragment>
+            </>
           )}
           <a href={html_url} className='btn btn-dark my-1'>
             Visit Github Profile
@@ -69,25 +71,25 @@ const User = () => {
           <ul>
             <li>
               {login && (
-                <Fragment>
+                <>
                   <strong>Username: </strong> {login}
-                </Fragment>
+                </>
               )}
             </li>
 
             <li>
               {company && (
-                <Fragment>
+                <>
                   <strong>Company: </strong> {company}
-                </Fragment>
+                </>
               )}
             </li>
 
             <li>
               {blog && (
-                <Fragment>
+                <>
                   <strong>Website: </strong> {blog}
-                </Fragment>
+                </>
               )}
             </li>
           </ul>
@@ -100,7 +102,7 @@ const User = () => {
         <div className='badge badge-dark'>Public Gists: {public_gists}</div>
       </div>
       <Repos repos={repos} />
-    </Fragment>
+    </>
   );
 };
 
